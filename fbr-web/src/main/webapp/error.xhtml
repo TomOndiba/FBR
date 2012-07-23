@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Facebook Reader logged out</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="common.css" library="css" />
+	<h:outputScript library="javascript" name="common.js" target="body" />
+</h:head>
+
+<h:body>
+	<h:form id="accessDeniedForm">
+
+		<h2 align="center" style="color: red;">FBR Received OAuth Error!</h2>
+
+		<div align="center">
+			<h3>Error Details:</h3>
+		</div>
+
+		<div>
+			<table align="center" class="errortable">
+
+				<tr>
+					<td>Error message</td>
+					<td height="30" style="color: red; font-size: 14px;"><h:outputText
+							value="#{errorBean.oauthError.errorMessage}" /></td>
+				</tr>
+
+				<tr>
+					<td>Error type</td>
+					<td height="30"><h:outputText
+							value="#{errorBean.oauthError.errorType}" /></td>
+				</tr>
+
+				<tr>
+					<td>Error code</td>
+					<td height="30"><h:outputText
+							value="#{errorBean.oauthError.errorCode}" /></td>
+				</tr>
+
+				<tr>
+					<td>Error subcode</td>
+					<td height="30"><h:outputText
+							value="#{errorBean.oauthError.errorSubcode}" /></td>
+				</tr>
+
+			</table>
+
+		</div>
+		<table>
+			<tr>
+				<td height="50"></td>
+			</tr>
+		</table>
+
+		<div>
+			<table align="center">
+				<tr>
+					<td height="30">
+						<div align="center">
+							<h3>Continue login with Facebook:</h3>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td height="30" align="center"><h:graphicImage
+							library="images" name="login-with-facebook-360.jpg"
+							alt="Login With Facebook Account" width="293" height="193"
+							styleClass="pointerCurs" onclick="loginToFacebookClient();" /></td>
+				</tr>
+
+				<tr>
+					<td height="50"></td>
+				</tr>
+			</table>
+
+		</div>
+
+		<table align="center">
+			<tr>
+				<td>Please Contact Villagrove Team for assistance</td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>

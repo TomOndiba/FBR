@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FBR Dashboard</title>
+	<h:outputStylesheet name="common.css" library="css" />
+	<h:outputScript library="javascript" name="common.js" target="body" />
+
+	<h2 align="center">Facebook Reader Dashboard</h2>
+</h:head>
+
+<h:body onload="validateAccessToken();return false;">
+<!-- <h:body> -->
+	<h:form id="dashboardForm">
+		<h:inputHidden id="code" value="#{dashboardBean.code}" />
+		<h:inputHidden id="accessToken" value="#{dashboardBean.accessToken}" />
+
+		<table align="center">
+
+			<tr>
+				<td height="100" align="center">Successfully logged in with
+					Facebook Credentials</td>
+			</tr>
+
+			<tr>
+				<td height="30" align="center"><h:commandButton
+						value="Get My Facebook Profile"
+						action="#{dashboardBean.userBasicProfile}"></h:commandButton></td>
+			</tr>
+			<tr>
+				<td height="30"></td>
+			</tr>
+
+			<tr>
+				<td height="30" align="center"><h:commandButton
+						value="Get My Facebook Friends"
+						action="#{dashboardBean.friendsList}"></h:commandButton></td>
+			</tr>
+
+			<tr>
+				<td height="50">
+				
+				</td>
+			</tr>
+			<tr>
+				<td height="30" align="center">
+					<h:commandButton
+						value="Sign out" onclick="logoutFromFacebookClient();return false;"></h:commandButton>
+				</td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Facebook Basic Profile Information</title>
+	<h:outputStylesheet name="common.css" library="css" />
+	<h:outputScript library="javascript" name="common.js" target="body" />
+</h:head>
+
+<h:body>
+
+	<h3 align="center">Facebook Basic Profile</h3>
+	<br></br>
+	<h:form>
+
+		<table align="center" class="imagetable">
+			<tr>
+				<td width="150">Name</td>
+				<td width="500"><h:outputText value="#{basicProfileBean.personDetail.name}" /></td>
+			</tr>
+			
+			<tr>
+				<td width="150">Email ID</td>
+				<td width="500"><h:outputText value="#{basicProfileBean.personDetail.emailId}" /></td>
+			</tr>
+
+			<tr>
+				<td>Birthday</td>
+				<td><h:outputText
+						value="#{basicProfileBean.personDetail.birthDay}" /></td>
+			</tr>
+
+			<tr>
+				<td>Sex</td>
+				<td><h:outputText value="#{basicProfileBean.personDetail.sex}" /></td>
+			</tr>
+
+			<tr>
+				<td>Relationship Status</td>
+				<td><h:outputText
+						value="#{basicProfileBean.personDetail.relationshipStatus}" /></td>
+			</tr>
+
+			<tr>
+				<td>Languages</td>
+				<td><h:outputText
+						value="#{basicProfileBean.personDetail.language}" /></td>
+			</tr>
+
+			<tr>
+				<td>Worked At</td>
+				<td><h:outputText
+						value="#{basicProfileBean.personDetail.workedAt}" /></td>
+			</tr>
+
+			<tr>
+				<td>Studied At</td>
+				<td><h:outputText
+						value="#{basicProfileBean.personDetail.studiedAt}" /></td>
+			</tr>
+
+			<tr>
+				<td>Lives In</td>
+				<td><h:outputText
+						value="#{basicProfileBean.personDetail.livesIn}" /></td>
+			</tr>
+
+		</table>
+
+<br></br><br></br><br></br>
+		<div align="center">
+			<h:commandButton value="Go back to Dashboard" onclick="loginToFacebookClient();return false;"></h:commandButton>
+		</div>
+
+	</h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Facebook Friends List</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="common.css" library="css" />
+	<h:outputScript library="javascript" name="common.js" target="body" />
+</h:head>
+
+<h:body>
+	<h3 align="center">Facebook Friends List</h3>
+	<br></br>
+
+	<h:form id="friendsForm">
+
+		<div align="center">
+			<h:dataTable value="#{friendsListBean.personList}" var="row"
+				styleClass="imagetable" rowClasses="even,odd">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Sl.No" />
+					</f:facet>
+					<h:outputText value="#{row.rowId}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Name" />
+					</f:facet>
+					<h:outputText value="#{row.name}" />
+				</h:column>
+			</h:dataTable>
+
+		</div>
+		<br></br>
+		<div align="center">
+			<h:commandButton value="Go back to Dashboard"
+				onclick="loginToFacebookClient();return false;"></h:commandButton>
+		</div>
+		<br></br>
+	</h:form>
+</h:body>
+</html>
+
