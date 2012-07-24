@@ -25,15 +25,19 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.vu.scs.fb.bean.PersonDetail;
+import com.vu.scs.fb.util.FbrConstants;
 import com.vu.scs.fb.util.OAuthError;
 import com.vu.scs.fb.util.OAuthErrorHandler;
 
 public class BasicProfileService {
 
-	private static Logger logger = LoggerFactory.getLogger(BasicProfileService.class);
+	private static Logger logger = LoggerFactory
+			.getLogger(BasicProfileService.class);
 
-	public PersonDetail getUserBasicProfile(String accessToken) throws OAuthError {
-		String basicInfoUrl = "https://graph.facebook.com/me";
+	public PersonDetail getUserBasicProfile(String accessToken)
+			throws OAuthError {
+
+		String basicInfoUrl = FbrConstants.FB_BASIC_INFO_URI;
 
 		PersonDetail personDetail = new PersonDetail();
 
@@ -43,13 +47,16 @@ public class BasicProfileService {
 			params.add(new BasicNameValuePair("access_token", accessToken));
 			HttpClient client = new DefaultHttpClient();
 
-			HttpGet httpGet = new HttpGet(basicInfoUrl + "?" + URLEncodedUtils.format(params, charset));
+			HttpGet httpGet = new HttpGet(basicInfoUrl + "?"
+					+ URLEncodedUtils.format(params, charset));
 
-			InputStream response = client.execute(httpGet).getEntity().getContent();
+			InputStream response = client.execute(httpGet).getEntity()
+					.getContent();
 
 			logger.debug("bp response received: " + response);
 
-			BufferedReader rd = new BufferedReader(new InputStreamReader(response));
+			BufferedReader rd = new BufferedReader(new InputStreamReader(
+					response));
 
 			String message = "";
 			String lineData;
@@ -95,7 +102,8 @@ public class BasicProfileService {
 			String fieldname = "";
 
 			// loop until token equal to "}"
-			while (jParser.nextToken() != null && (fieldname = jParser.getCurrentName()) != "updated_time") {
+			while (jParser.nextToken() != null
+					&& (fieldname = jParser.getCurrentName()) != "updated_time") {
 
 				if ("location".equals(fieldname) && readLocation) {
 					logger.debug("entering to location.. ");
@@ -156,7 +164,8 @@ public class BasicProfileService {
 							String workedAt = jParser.getText();
 							logger.debug("workedAt received: " + workedAt);
 							if (personDetail.getWorkedAt() != null) {
-								personDetail.setWorkedAt(personDetail.getWorkedAt() + ", " + workedAt);
+								personDetail.setWorkedAt(personDetail
+										.getWorkedAt() + ", " + workedAt);
 							} else {
 								personDetail.setWorkedAt(workedAt);
 							}
@@ -179,7 +188,8 @@ public class BasicProfileService {
 							}
 							logger.debug("schoolName received: " + schoolName);
 							if (personDetail.getStudiedAt() != null) {
-								personDetail.setStudiedAt(personDetail.getStudiedAt() + ", " + schoolName);
+								personDetail.setStudiedAt(personDetail
+										.getStudiedAt() + ", " + schoolName);
 							} else {
 								personDetail.setStudiedAt(schoolName);
 							}
@@ -198,7 +208,8 @@ public class BasicProfileService {
 							String lang = jParser.getText();
 							logger.debug("lang received: " + lang);
 							if (personDetail.getLanguage() != null) {
-								personDetail.setLanguage(personDetail.getLanguage() + ", " + lang);
+								personDetail.setLanguage(personDetail
+										.getLanguage() + ", " + lang);
 							} else {
 								personDetail.setLanguage(lang);
 							}

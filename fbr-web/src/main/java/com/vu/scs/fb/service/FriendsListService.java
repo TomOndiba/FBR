@@ -25,15 +25,17 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.vu.scs.fb.bean.Person;
+import com.vu.scs.fb.util.FbrConstants;
 import com.vu.scs.fb.util.OAuthError;
 import com.vu.scs.fb.util.OAuthErrorHandler;
 
 public class FriendsListService {
 
-	private static Logger logger = LoggerFactory.getLogger(FriendsListService.class);
+	private static Logger logger = LoggerFactory
+			.getLogger(FriendsListService.class);
 
 	public List<Person> getFriendsList(String accessToken) throws OAuthError {
-		String basicInfoUrl = "https://graph.facebook.com/me/friends";
+		String friendsListUrl = FbrConstants.FB_FRIENDS_LIST_URI;
 		List<Person> personList = new ArrayList<Person>();
 
 		try {
@@ -42,13 +44,16 @@ public class FriendsListService {
 			params.add(new BasicNameValuePair("access_token", accessToken));
 			HttpClient client = new DefaultHttpClient();
 
-			HttpGet httpGet = new HttpGet(basicInfoUrl + "?" + URLEncodedUtils.format(params, charset));
+			HttpGet httpGet = new HttpGet(friendsListUrl + "?"
+					+ URLEncodedUtils.format(params, charset));
 
-			InputStream response = client.execute(httpGet).getEntity().getContent();
+			InputStream response = client.execute(httpGet).getEntity()
+					.getContent();
 
 			logger.debug("bp response received: " + response);
 
-			BufferedReader rd = new BufferedReader(new InputStreamReader(response));
+			BufferedReader rd = new BufferedReader(new InputStreamReader(
+					response));
 
 			String message = "";
 			String lineData;

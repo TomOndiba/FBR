@@ -118,7 +118,7 @@ public class DashboardBean implements Serializable {
 		if (error_reason != null) {
 			try {
 				// you may want to pass this error to UI
-				String error_redirect_uri = "http://localhost:8080/fbr-web/accessDenied.jsf";
+				String error_redirect_uri = FbrConstants.FBR_ACCESS_DENIED_URI;
 				String error_desc = req.getParameter("error_description");
 
 				logger.debug("User denied access to the FBR app, error_reason: " + error_reason + ", error_desc: " + error_desc);
